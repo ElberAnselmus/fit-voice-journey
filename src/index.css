@@ -1,58 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Fitness Tracker 60/30/10 Design System
+60% - Deep Blue (Primary)
+30% - Warm Gray (Secondary) 
+10% - Bright Orange (Accent)
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
+    /* 60/30/10 Color Scheme */
+    /* Primary (60%) - Deep Blue */
+    --primary: 221 87% 20%;
+    --primary-foreground: 210 40% 98%;
+    
+    /* Secondary (30%) - Warm Gray */
+    --secondary: 210 11% 15%;
+    --secondary-foreground: 210 40% 98%;
+    
+    /* Accent (10%) - Bright Orange */
+    --accent: 25 95% 53%;
+    --accent-foreground: 210 40% 98%;
+    
+    /* Background & Cards */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
-
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
+    
+    /* Neutral Colors */
+    --muted: 210 40% 96%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
+    --ring: 221 87% 20%;
+    
+    /* Destructive */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    
+    /* Sidebar - Using primary colors */
+    --sidebar-background: 221 87% 20%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 25 95% 53%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 221 87% 25%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 221 87% 25%;
+    --sidebar-ring: 25 95% 53%;
+    
+    /* Chart colors */
+    --chart-1: 221 87% 20%;
+    --chart-2: 25 95% 53%;
+    --chart-3: 210 11% 15%;
+    --chart-4: 210 40% 96%;
+    --chart-5: 215.4 16.3% 46.9%;
+    
     --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
@@ -98,8 +107,52 @@ All colors MUST be HSL.
   * {
     @apply border-border;
   }
-
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
   }
+}
+
+/* Custom fitness tracker utilities */
+.gradient-primary {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--muted)));
+}
+
+/* Voice recognition animation */
+.recording-pulse {
+  animation: recording 2s ease-in-out infinite;
+}
+
+@keyframes recording {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* Timer pulse animation */
+.timer-pulse {
+  animation: timer-pulse 1s ease-in-out infinite;
+}
+
+@keyframes timer-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Sidebar transition */
+.sidebar-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
